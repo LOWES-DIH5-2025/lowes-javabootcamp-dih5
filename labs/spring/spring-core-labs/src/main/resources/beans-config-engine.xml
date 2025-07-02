@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    //        Engine petrolEngine = new Engine("Petrol", 200, 10);
+//        Engine electricEngine = new Engine("Electric", 300, 15);
+//        Engine dieselEngine = new Engine("Diesel", 250, 12);
+-->
+
+<!--    <bean id="engineFactory" class="com.labs.spring.core.xml.EngineFactory" />-->
+
+<!--    <bean id="petrolEngine" class="com.labs.spring.core.xml.Engine" lazy-init="true" factory-bean="engineFactory" factory-method="createEngine" autowire-candidate="true">-->
+<!--        <constructor-arg name="type" value="Electric"/>-->
+<!--&lt;!&ndash;        <property name="type" value="Petrol"/>&ndash;&gt;-->
+<!--        <property name="horsepower" value="500"/>-->
+<!--        <property name="torque" value="10"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="electricEngine" class="com.labs.spring.core.xml.Engine" lazy-init="true" factory-method="createElectricEngine" autowire-candidate="true">-->
+<!--        <property name="type" value="Electric"/>-->
+<!--        <property name="horsepower" value="300"/>-->
+<!--        <property name="torque" value="15"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="dieselEngine" class="com.labs.spring.core.xml.Engine" lazy-init="true" scope="prototype" primary="true">-->
+<!--        <property name="type" value="Diesel"/>-->
+<!--        <property name="horsepower" value="250"/>-->
+<!--        <property name="torque" value="12"/>-->
+<!--    </bean>-->
+
+    <bean id="dieselEngine" class="com.labs.spring.core.jconfig.DieselEngine">
+        <property name="type" value="Diesel"/>
+        <property name="horsepower" value="250"/>
+        <property name="torque" value="12"/>
+    </bean>
+
+</beans>
