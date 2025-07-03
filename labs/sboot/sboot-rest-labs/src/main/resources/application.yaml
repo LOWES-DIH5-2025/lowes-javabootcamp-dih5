@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: sboot-rest-labs
+  profiles:
+    active: prod
+#  datasource:
+#   url: jdbc:postgresql://localhost:5432/training
+#   username: postgres
+#   password: postgres
+#   driver-class-name: org.postgresql.Driver
+  datasource:
+    url: jdbc:h2:mem:training
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+h2:
+  console:
+    enabled: true
+    path: /h2-console
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.labs.sboot: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    shutdown:
+      enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+greetings:
+  id: 100
+  message: Welcome to Spring Boot REST - DEV YAML!!!
+
+---
+spring:
+  config:
+    activate:
+      on-profile: staging
+
+greetings:
+  id: 200
+  message: Welcome to Spring Boot REST - STAGING YAML!!!
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+greetings:
+  id: 300
+  message: Welcome to Spring Boot REST - PROD YAML!!!

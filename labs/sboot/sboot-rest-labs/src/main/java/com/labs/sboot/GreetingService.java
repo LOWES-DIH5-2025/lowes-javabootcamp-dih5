@@ -1,5 +1,6 @@
 package com.labs.sboot;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,48 +10,57 @@ import java.util.Map;
 
 @Service
 public class GreetingService {
-    private Map<Integer, Greetings> greetings = new HashMap<>();
+//    private Map<Integer, Greetings> greetings = new HashMap<>();
+    @Autowired
+    GreetingsRepository greetingsRepo;
 
     public boolean createGreeting(Greetings greeting) {
-        greetings.put(greeting.getId(), greeting);
+//        greetings.put(greeting.getId(), greeting);
+        greetingsRepo.save(greeting); // Save greeting to the repository
         return true; // Greeting added successfully
     }
 
     public Greetings getGreeting(int id) throws NoGreetingsFoundException {
-        if(!greetings.containsKey(id)) {
+        if(!greetingsRepo.existsById(id)) {
             throw new NoGreetingsFoundException("No greeting found with id: " + id);
         }
-        return greetings.get(id); // Returns null if not found
+//        return greetings.get(id); // Returns null if not found
+        return greetingsRepo.findById(id).get();
     }
 
     public Collection<Greetings> getAllGreetings() {
-        return greetings.values(); // Returns all greetings
+//        return greetings.values(); // Returns all greetings
+        return new ArrayList<>(greetingsRepo.findAll()); // Fetch all greetings from the repository
     }
 
     public boolean updateGreeting(Greetings greeting) throws NoGreetingsFoundException {
-        if(!greetings.containsKey(greeting.getId())) {
+        if(!greetingsRepo.existsById(greeting.getId())) {
             throw new NoGreetingsFoundException("No greeting found with id: " + greeting.getId());
         }
 
-        greetings.put(greeting.getId(), greeting); // Update existing greeting
+//        greetings.put(greeting.getId(), greeting);
+//      Update existing greeting
+        greetingsRepo.save(greeting); // Save updated greeting to the repository
         return true; // Update successful
     }
 
     public boolean deleteGreeting(int id) throws NoGreetingsFoundException {
-        if(!greetings.containsKey(id)) {
+        if(!greetingsRepo.existsById(id)) {
             throw new NoGreetingsFoundException("No greeting found with id: " + id);
         }
 
-        greetings.remove(id); // Remove greeting by id
+//        greetings.remove(id); // Remove greeting by id
+        greetingsRepo.deleteById(id); // Delete greeting from the repository
         return true; // Deletion successful
     }
 
     public Collection<Greetings> searchGreetings(String query) {
         // Implement a simple search by message
-        return greetings.values()
-                .stream()
-                .filter(g -> g.getMessage().toLowerCase().contains(query.toLowerCase()))
-                .toList();
+//        return greetingsRepo.findAll()
+//                .stream()
+//                .filter(g -> g.getMessage().toLowerCase().contains(query.toLowerCase()))
+//                .toList();
+        return greetingsRepo.searchMessages(query);
     }
 
 }
