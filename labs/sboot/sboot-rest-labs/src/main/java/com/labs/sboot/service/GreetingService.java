@@ -1,18 +1,19 @@
-package com.labs.sboot;
+package com.labs.sboot.service;
 
+import com.labs.sboot.repository.GreetingsRepository;
+import com.labs.sboot.exception.NoGreetingsFoundException;
+import com.labs.sboot.model.Greetings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class GreetingService {
 //    private Map<Integer, Greetings> greetings = new HashMap<>();
     @Autowired
-    GreetingsRepository greetingsRepo;
+GreetingsRepository greetingsRepo;
 
     public boolean createGreeting(Greetings greeting) {
 //        greetings.put(greeting.getId(), greeting);
@@ -50,7 +51,11 @@ public class GreetingService {
         }
 
 //        greetings.remove(id); // Remove greeting by id
-        greetingsRepo.deleteById(id); // Delete greeting from the repository
+        try {
+            greetingsRepo.deleteById(id);
+        }catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());// Delete greeting from the repository
+        }
         return true; // Deletion successful
     }
 

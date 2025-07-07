@@ -1,5 +1,6 @@
-package com.labs.sboot;
+package com.labs.sboot.exception;
 
+import com.labs.sboot.model.ResponseMessage;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

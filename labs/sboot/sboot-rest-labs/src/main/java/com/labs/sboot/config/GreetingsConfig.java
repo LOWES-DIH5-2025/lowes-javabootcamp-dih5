@@ -1,4 +1,4 @@
-package com.labs.sboot;
+package com.labs.sboot.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

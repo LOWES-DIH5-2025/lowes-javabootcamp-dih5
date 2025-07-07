@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: sboot-rest-client-labs
+
+server:
+    port: 9099

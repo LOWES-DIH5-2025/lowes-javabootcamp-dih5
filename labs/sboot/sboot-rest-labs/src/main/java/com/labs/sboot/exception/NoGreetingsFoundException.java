@@ -1,4 +1,4 @@
-package com.labs.sboot;
+package com.labs.sboot.exception;
 
 public class NoGreetingsFoundException extends Exception {
     public NoGreetingsFoundException() {

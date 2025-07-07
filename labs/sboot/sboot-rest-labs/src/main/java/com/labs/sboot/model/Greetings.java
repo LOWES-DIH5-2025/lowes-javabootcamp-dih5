@@ -1,13 +1,12 @@
-package com.labs.sboot;
+package com.labs.sboot.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.hateoas.RepresentationModel;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,7 +19,9 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Entity
 //@RequiredArgsConstructor
-public class Greetings {
+//public class Greetings {
+// HATEOAS Support
+public class Greetings extends RepresentationModel<Greetings> {
     @Positive(message = "ID must be a positive number")
 //    @Size(min = 1, max = 100, message = "ID must be between 1 and 100")
 //    @Value("100")
