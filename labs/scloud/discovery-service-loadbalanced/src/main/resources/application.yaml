@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: discovery-service-loadbalanced
+
+server:
+  port: 7071
+

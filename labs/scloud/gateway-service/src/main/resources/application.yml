@@ -1,0 +1,36 @@
+server:
+  port: 8111
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+#        http://localhost:8111/matchx/api/products
+        - id: product-route
+          uri: lb://product-service
+          predicates:
+            - Path=/matchx/api/products
+          filters:
+            - StripPrefix=2
+# Eureka Client
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+# Logging
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web: DEBUG
+
+# Actuator Endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
