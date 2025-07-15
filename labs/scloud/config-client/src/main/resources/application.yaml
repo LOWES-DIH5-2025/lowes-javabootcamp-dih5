@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-client
+  config:
+    import: optional:configserver:http://localhost:8888
+#  profiles:
+#    active:
+#      - dev
+
+# Eureka Client
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+# Server Port
+server:
+  port: 8088

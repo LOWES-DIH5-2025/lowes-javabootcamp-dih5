@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: config-service
+  # config git hub uri
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/LOWES-DIH5-2025/lowes-config-repo
+          skip-ssl-validation: true
+
+
+# Eureka Client
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+# Server Port
+server:
+  port: 8888
