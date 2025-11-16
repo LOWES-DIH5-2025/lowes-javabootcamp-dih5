@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: sboot-oauth2-security-labs
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Ov23liAGouOS4w57k3jV
+            client-secret: <github-secret>
+          google:
+            client-id: 698746916271-jk8potgr9cg14t2agob8gof26l3soric.apps.googleusercontent.com
+            client-secret: <google-secret>
+server:
+    port: 7788
