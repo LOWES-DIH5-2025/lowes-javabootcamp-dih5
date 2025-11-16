@@ -3,10 +3,7 @@ package com.labs.scloud.controller;
 import com.labs.scloud.model.Product;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpRequest;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,15 +30,16 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public Product createProduct(Product product) {
+    public Product createProduct(@RequestBody  Product product) {
         // Logic to create a product
         products.put(product.getId(), product);
         return product;
     }
 
     @GetMapping("/products")
-    public List<Product> getAllProducts() {
+    public List<Product> getAllProducts() throws InterruptedException {
         // Logic to retrieve all products
+//        Thread.sleep(3000); // Simulating delay for demonstration
         return new ArrayList<>(products.values());
     }
 
